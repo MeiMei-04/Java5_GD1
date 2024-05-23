@@ -48,8 +48,7 @@ public class userController {
     }
 
     @GetMapping("/login")
-    public String login(@ModelAttribute("ac") account ac,Model model) {
-        model.addAttribute("ac", ac);
+    public String login(@ModelAttribute("ac") account ac) {
         return "user/login.html";
     }
 
