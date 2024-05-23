@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>User Management</title>
+        <style>
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            th, td {
+                border: 1px solid black;
+                padding: 8px;
+                text-align: left;
+            }
+            th {
+                background-color: #f2f2f2;
+            }
+            .btn-red {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            }
+
+            .btn-blue {
+                background-color: blue;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            .btn-green {
+                background-color: green;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>User List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Type</th>
+                    <th>Acction</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each ="x : ${listUser}">
+                    <td th:text ="${x.id}"></td>
+                    <td th:text ="${x.name}"></td>
+                    <td th:text ="${x.email}"></td>
+                    <td th:text ="${x.type}==0?'admin':'user'"></td>
+                    <td>
+                        <a th:href="@{/user/add}"><button class="btn-red">Thêm</button></a>
+                        <a th:href="@{/user/edit/{id}(id = ${x.id})}"><button class="btn-blue">Sửa</button></a>
+                        <a th:href="@{/user/delete/{id}(id = ${x.id})}"><button class="btn-green">Xoá</button></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

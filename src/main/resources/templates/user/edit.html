@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>User Registration</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container mt-5">
+            <h2>User UPDATE Form</h2>
+            <form th:action="@{/user/update/{id} (id=${id})}" method="POST">
+                <div class="form-group">
+                    <label for="id">ID:</label>
+                    <input type="text" id="id" name="id" class="form-control" disabled th:value="${u.id}">
+                </div>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" class="form-control" th:value="${u.name}">
+                    <div th:if="${errors != null and errors['name'] != null}" th:style="'color: red;'">
+                        <small th:text="${errors['name']}"></small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" class="form-control" th:value="${u.email}">
+                    <div th:if="${errors != null and errors['email'] != null}" th:style="'color: red;'">
+                        <small th:text="${errors['email']}"></small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="type">Type:</label>
+                    <select id="type" name="type" class="form-control">
+                        <option value="0" th:selected="${u.type == 0}">Admin</option>
+                        <option value="1" th:selected="${u.type == 1}">User</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">UPDATE</button>
+            </form>
+        </div>
+        <!-- Bootstrap JS và các thư viện cần thiết khác -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+</html>
